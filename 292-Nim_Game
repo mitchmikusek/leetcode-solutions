@@ -15,6 +15,7 @@
  *
  */ 
 public class Solution {
+
     /**
      * Given a player must take 1, 2, or 3 stones
      * and the winner must take the last stone
