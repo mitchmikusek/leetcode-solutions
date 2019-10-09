@@ -1,3 +1,50 @@
+# 1, 2 ,3 ... can all be decoded a single way
+# 12, 21, 26 ... can all be decoded in 1 of 2 ways
+# values starting at 0 are invalid
+# values over 27 can only be decoded 1 way
+
+class Solution:
+    #     def numDecodings(self, s: str) -> int:
+    #         memo = {}
+    #         return self.num_ways(s, memo)
+    #         return Decoder.num_ways(str(s))
+        
+        #     def num_ways(self, s:str, memo) -> int:
+        #         if s in memo: return memo[s]
+
+        #         if s == "":     return 1
+        #         if s[0] == "0": return 0
+                
+                #         result = self.num_ways(s[1:], memo)
+                        
+                        #         if len(s) > 1 and int(s[0:2]) <= 26:
+                        #             result += self.num_ways(s[2:], memo)
+                                
+                                #         memo[s] = result
+                                #         return result
+
+                                    def numDecodings(self, s: str) -> int:
+                                                k = len(s)
+                                                        memo = [None] * ( k + 1)
+                                                                return self.num_ways(s, k, memo)
+                                                                
+                                                                def num_ways(self, s:str, k:int, memo) -> int:
+                                                                            if memo[k] != None: return memo[k]
+                                                                                    
+                                                                                            i = len(s) - k
+
+                                                                                                    if k == 0:     return 1
+                                                                                                            if s[i] == "0": return 0
+                                                                                                                    
+                                                                                                                            result = self.num_ways(s, k-1, memo)
+                                                                                                                                    
+                                                                                                                                            if k>1 and int(s[i:i+2]) <= 26:
+                                                                                                                                                        result += self.num_ways(s, k-2, memo)
+                                                                                                                                                                
+                                                                                                                                                                        memo[k] = result
+                                                                                                                                                                                return result
+
+
 """
     12345
     27342
